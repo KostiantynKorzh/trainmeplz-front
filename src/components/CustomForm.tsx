@@ -1,32 +1,32 @@
-import React, { useState } from "react";
-import { Button, Form, Input, Upload, message } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
+import { Button, Form, Input, Select } from "antd";
 import TestService from "../services/TestService";
 
-const CustomForm = (): JSX.Element => {
+const { Option } = Select;
+
+const CustomForm = () => {
+  const [labels, setLabels] = useState([]);
+
+  const [chosenLabel, setChosenLabel] = useState("");
+
   const fields = {
     label: "label",
     image: "image",
   };
 
-  type CustomFormData = {
-    label: string;
-    image: any;
-  };
-
   const [image, setImage] = useState("");
 
-  const sendData = (values: CustomFormData): void => {
-    console.log(values);
-    const label: string = values.label;
-    console.log(image);
+  useEffect(() => {
+    TestService.getAllLabels()
+      .then((resp) => {
+        console.log(resp);
+        setLabels(resp.data);
+      })
+      .catch(console.log);
+  }, []);
 
-    const formData = new FormData();
-    formData.append("file", image);
-
-    console.log("formData", formData.get("file"));
-
-    TestService.sendDataToServer(label, image)
+  const sendData = (): void => {
+    TestService.sendDataToServer(chosenLabel, image)
       .then((resp) => console.log(resp.data))
       .catch(console.log);
   };
@@ -44,21 +44,22 @@ const CustomForm = (): JSX.Element => {
         name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
-        // initialValues={{ remember: true }}
         onFinish={sendData}
         autoComplete="off"
+        style={{ marginTop: "100px" }}
       >
-        <Form.Item
-          label={fields.label}
-          name={fields.label}
-          rules={[{ required: true, message: "Please input label" }]}
-        >
-          <Input />
+        <Form.Item label={fields.label} name={fields.label}>
+          <Input.Group compact>
+            <Select
+              defaultValue={labels[0] || "choose label"}
+              onChange={(value) => setChosenLabel(value)}
+            >
+              {labels.length > 0 &&
+                labels.map((label) => <Option value={label}>{label}</Option>)}
+            </Select>
+          </Input.Group>
         </Form.Item>
         <Form.Item label={fields.image} name={fields.image}>
-          {/*<Upload onChange={handleChange}>*/}
-          {/*  <Button icon={<UploadOutlined />}>Click to Upload</Button>*/}
-          {/*</Upload>*/}
           <input type="file" name="image" onChange={onChange} />
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

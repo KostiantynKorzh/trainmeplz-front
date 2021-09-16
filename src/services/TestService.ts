@@ -13,6 +13,11 @@ const sendDataToServer = (label: string, imageData: any): Promise<any> => {
   });
 };
 
+const getAllLabels = (): Promise<any> => {
+  return axios.get(URL + "labels");
+};
+
 export default {
   sendDataToServer,
+  getAllLabels,
 };
