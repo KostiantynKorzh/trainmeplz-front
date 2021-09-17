@@ -4,7 +4,7 @@ import TestService from "../services/TestService";
 
 const { Option } = Select;
 
-const CustomForm = () => {
+const CustomForm = (): JSX.Element => {
   const [labels, setLabels] = useState([]);
 
   const [chosenLabel, setChosenLabel] = useState("");

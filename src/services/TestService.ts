@@ -17,7 +17,12 @@ const getAllLabels = (): Promise<any> => {
   return axios.get(URL + "labels");
 };
 
+const getImageStats = (): Promise<any> => {
+  return axios.get(URL + "images");
+};
+
 export default {
   sendDataToServer,
   getAllLabels,
+  getImageStats,
 };
