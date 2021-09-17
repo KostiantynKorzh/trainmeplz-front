@@ -4,7 +4,7 @@ import TestService from "../services/TestService";
 
 const { Option } = Select;
 
-const CustomForm = (): JSX.Element => {
+const CustomForm = ({ onSubmit }: any): JSX.Element => {
   const [labels, setLabels] = useState([]);
 
   const [chosenLabel, setChosenLabel] = useState("");
@@ -25,11 +25,11 @@ const CustomForm = (): JSX.Element => {
       .catch(console.log);
   }, []);
 
-  const sendData = (): void => {
-    TestService.sendDataToServer(chosenLabel, image)
-      .then((resp) => console.log(resp.data))
-      .catch(console.log);
-  };
+  // const sendData = (): void => {
+  //   TestService.sendDataToServer(chosenLabel, image)
+  //     .then((resp) => console.log(resp.data))
+  //     .catch(console.log);
+  // };
 
   const onChange = (event: any) => {
     if (event.target.files && event.target.files[0]) {
@@ -44,7 +44,7 @@ const CustomForm = (): JSX.Element => {
         name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
-        onFinish={sendData}
+        onFinish={() => onSubmit(chosenLabel, image)}
         autoComplete="off"
         style={{ marginTop: "100px" }}
       >

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import TestService from "../services/TestService";
 
-const ImageStats = (): JSX.Element => {
+const ImageStats = (submitted: any): JSX.Element => {
   const [stats, setStats] = useState(null);
 
+  // TODO remove double rendering
   useEffect(() => {
     TestService.getImageStats()
       .then((resp) => setStats(resp.data))
       .catch(console.log);
-  }, []);
+  }, [submitted]);
 
   return (
     <>

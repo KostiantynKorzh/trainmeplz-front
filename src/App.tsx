@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.css";
-import CustomForm from "./components/CustomForm";
-import ImageStats from "./components/ImageStats";
+import Main from "./components/Main";
 
 function App() {
   return (
     <>
-      <CustomForm />
-      <ImageStats />
+      <Main />
     </>
   );
 }
