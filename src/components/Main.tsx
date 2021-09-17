@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CustomForm from "./CustomForm";
 import StatsBlock from "./StatsBlock";
 import TestService from "../services/TestService";
+import TestForm from "./TestForm";
 
 const Main = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -16,8 +17,9 @@ const Main = () => {
 
   return (
     <>
-      <CustomForm onSubmit={onSubmit} />
-      <StatsBlock submitted={submitted} />
+      {/*<CustomForm onSubmit={onSubmit} />*/}
+      {/*<StatsBlock submitted={submitted} />*/}
+      <TestForm />
     </>
   );
 };

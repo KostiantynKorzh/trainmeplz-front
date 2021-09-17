@@ -21,8 +21,19 @@ const getImageStats = (): Promise<any> => {
   return axios.get(URL + "images");
 };
 
+const sendTestImage = (imageData: any): Promise<any> => {
+  const data = new FormData();
+  data.append("file", imageData);
+  data.append("filename", "file");
+
+  return axios.post(URL + "/test", data, {
+    headers: { "content-type": "multipart/form-data" },
+  });
+};
+
 export default {
   sendDataToServer,
   getAllLabels,
   getImageStats,
+  sendTestImage,
 };
