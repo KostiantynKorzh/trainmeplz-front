@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import CustomForm from "./CustomForm";
 import StatsBlock from "./StatsBlock";
-import TestService from "../services/TestService";
-import TestForm from "./TestForm";
+import TestService from "../../../services/TestService";
 
-const Main = () => {
+const Train = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = (chosenLabel: string, image: any): void => {
@@ -17,11 +16,10 @@ const Main = () => {
 
   return (
     <>
-      {/*<CustomForm onSubmit={onSubmit} />*/}
-      {/*<StatsBlock submitted={submitted} />*/}
-      <TestForm />
+      <CustomForm onSubmit={onSubmit} />
+      <StatsBlock submitted={submitted} />
     </>
   );
 };
 
-export default Main;
+export default Train;

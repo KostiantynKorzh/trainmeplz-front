@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "antd";
-import TestService from "../services/TestService";
+import TestService from "../../../services/TestService";
 import Prediction from "./Prediction";
 
 const TestForm = () => {
