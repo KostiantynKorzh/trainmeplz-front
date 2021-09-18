@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CustomForm from "./CustomForm";
+import TrainForm from "./TrainForm";
 import StatsBlock from "./StatsBlock";
 import TestService from "../../../services/TestService";
 
@@ -16,7 +16,7 @@ const Train = () => {
 
   return (
     <>
-      <CustomForm onSubmit={onSubmit} />
+      <TrainForm onSubmit={onSubmit} submitted={submitted} />
       <StatsBlock submitted={submitted} />
     </>
   );

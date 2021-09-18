@@ -6,14 +6,12 @@ const ImageStats = ({ submitted }: any): JSX.Element => {
 
   // TODO remove double rendering
   useEffect(() => {
-    console.log("1");
     TestService.getImageStats()
       .then((resp) => setStats(resp.data))
       .catch(console.log);
   }, [submitted]);
 
   useEffect(() => {
-    console.log(2);
     TestService.getImageStats()
       .then((resp) => setStats(resp.data))
       .catch(console.log);

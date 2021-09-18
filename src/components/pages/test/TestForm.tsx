@@ -2,44 +2,51 @@ import React, { useState } from "react";
 import { Button, Form } from "antd";
 import TestService from "../../../services/TestService";
 import Prediction from "./Prediction";
+import "../../../styles.css";
+import ImageUploader from "../../common/ImageUploader";
 
 const TestForm = () => {
   const [image, setImage] = useState("");
   const [prediction, setPrediction] = useState("");
-
-  const onChange = (event: any) => {
-    if (event.target.files && event.target.files[0]) {
-      const img = event.target.files[0];
-      setImage(img);
-    }
-  };
+  const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = () => {
     TestService.sendTestImage(image)
       .then((resp) => setPrediction(resp.data))
       .catch(console.log);
     setPrediction("");
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 1000);
+  };
+
+  const onChangeImage = (image: any) => {
+    setImage(image);
   };
 
   return (
     <>
-      <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        onFinish={() => onSubmit()}
-        autoComplete="off"
-        style={{ marginTop: "100px" }}
-      >
-        <Form.Item label="test_image" name="test_image">
-          <input type="file" name="image" onChange={onChange} />
-        </Form.Item>
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
+      <div className="center-div">
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          onFinish={() => onSubmit()}
+          autoComplete="off"
+          style={{ marginTop: "100px" }}
+        >
+          <Form.Item label="test_image" name="test_image">
+            <ImageUploader
+              submitted={submitted}
+              onChangeParent={onChangeImage}
+            />
+          </Form.Item>
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
       <div
         style={{
           width: "100%",

@@ -3,11 +3,11 @@ import { URL } from "../utils/Constants";
 
 const sendDataToServer = (label: string, imageData: any): Promise<any> => {
   const data = new FormData();
-  data.append("file", imageData);
+  data.append("file", imageData.originFileObj);
   data.append("filename", label);
-  data.append("label", label);
 
-  console.log("from service:", label, data);
+  console.log(data.get("file"));
+
   return axios.post(URL + "?label=" + label, data, {
     headers: { "content-type": "multipart/form-data" },
   });
@@ -23,8 +23,8 @@ const getImageStats = (): Promise<any> => {
 
 const sendTestImage = (imageData: any): Promise<any> => {
   const data = new FormData();
-  data.append("file", imageData);
-  data.append("filename", "file");
+  data.append("file", imageData.originFileObj);
+  data.append("filename", "test");
 
   return axios.post(URL + "/test", data, {
     headers: { "content-type": "multipart/form-data" },
