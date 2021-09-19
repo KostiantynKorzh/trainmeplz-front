@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Select } from "antd";
-import TestService from "../../../services/TestService";
 import "../../../styles.css";
 import ImageUploader from "../../common/ImageUploader";
+import LabelService from "../../../services/LabelService";
 
 const { Option } = Select;
 
@@ -19,7 +19,7 @@ const TrainForm = ({ onSubmit, submitted }: any): JSX.Element => {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    TestService.getAllLabels()
+    LabelService.getAllLabels()
       .then((resp) => {
         setLabels(resp.data);
       })
@@ -51,7 +51,11 @@ const TrainForm = ({ onSubmit, submitted }: any): JSX.Element => {
                 onChange={(value) => setChosenLabel(value)}
               >
                 {labels.length > 0 &&
-                  labels.map((label) => <Option value={label}>{label}</Option>)}
+                  labels.map((label, i) => (
+                    <Option value={label} key={i}>
+                      {label}
+                    </Option>
+                  ))}
               </Select>
             </Input.Group>
           </Form.Item>

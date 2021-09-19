@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import TrainForm from "./TrainForm";
 import StatsBlock from "./StatsBlock";
-import TestService from "../../../services/TestService";
+import TrainService from "../../../services/TrainService";
 
 const Train = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = (chosenLabel: string, image: any): void => {
-    TestService.sendDataToServer(chosenLabel, image)
+    TrainService.sendDataToServer(chosenLabel, image)
       .then((resp) => console.log(resp.data))
       .catch(console.log);
     setSubmitted(true);

@@ -1,16 +1,18 @@
 import axios from "axios";
 import { URL } from "../utils/Constants";
 
-const sendTestImage = (imageData: any): Promise<any> => {
+const sendDataToServer = (label: string, imageData: any): Promise<any> => {
   const data = new FormData();
   data.append("file", imageData.originFileObj);
-  data.append("filename", "test");
+  data.append("filename", label);
 
-  return axios.post(URL + "tests", data, {
+  console.log(data.get("file"));
+
+  return axios.post(URL + "trains?label=" + label, data, {
     headers: { "content-type": "multipart/form-data" },
   });
 };
 
 export default {
-  sendTestImage,
+  sendDataToServer,
 };

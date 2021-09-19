@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Button, Form } from "antd";
+import { Button, Form, Image } from "antd";
 import TestService from "../../../services/TestService";
 import Prediction from "./Prediction";
 import "../../../styles.css";
 import ImageUploader from "../../common/ImageUploader";
 
 const TestForm = () => {
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState();
   const [prediction, setPrediction] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -34,11 +34,8 @@ const TestForm = () => {
           autoComplete="off"
           style={{ marginTop: "100px" }}
         >
-          <Form.Item label="test_image" name="test_image">
-            <ImageUploader
-              submitted={submitted}
-              onChangeParent={onChangeImage}
-            />
+          <Form.Item label="image" name="image">
+            <ImageUploader submitted={true} onChangeParent={onChangeImage} />
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" htmlType="submit">
