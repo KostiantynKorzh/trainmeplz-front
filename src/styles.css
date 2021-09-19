@@ -2,3 +2,11 @@
     display: flex;
     justify-content: center;
 }
+
+.logo {
+    background-color: #001529 !important;
+}
+
+.logo:hover {
+    background-color: #001529 !important;
+}
