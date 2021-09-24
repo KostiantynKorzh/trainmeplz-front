@@ -1,8 +1,8 @@
 import axios from "axios";
-import { URL } from "../utils/Constants";
+import { REACT_APP_BACK_URL } from "../utils/Constants";
 
 const getImageStats = (): Promise<any> => {
-  return axios.get(URL + "stats/images");
+  return axios.get(REACT_APP_BACK_URL + "stats/images");
 };
 
 export default {

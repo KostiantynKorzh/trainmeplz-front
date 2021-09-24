@@ -1,0 +1,65 @@
+import React, { useEffect, useState } from "react";
+import ArticleService, { IArticle } from "../../../../services/ArticleService";
+import Test from "../test_article";
+import { Button, Space, Table } from "antd";
+import { Link, useHistory } from "react-router-dom";
+
+const AdminArticles = () => {
+  const [articles, setArticles] = useState<IArticle[]>([]);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    // ArticleService.getAllArticles()
+    //   .then((resp) => setArticles(resp.data))
+    //   .catch(console.log);
+    setArticles(Test.articles);
+  }, []);
+
+  const columns = [
+    {
+      title: "Title",
+      dataIndex: "title",
+    },
+    // {
+    //   title: "Description",
+    //   dataIndex: "description",
+    // },
+    // {
+    //   title: "Created At",
+    //   dataIndex: 'createdAt'
+    // },
+    // {
+    //   title: "Updated At",
+    //   dataIndex: 'updatedAt'
+    // },
+    {
+      title: "",
+      dataIndex: "actions",
+      render: (text: any, record: any) => (
+        <Space size="middle">
+          <Link to={`/articles/admin/${record.id}`}>Edit</Link>
+          <a onClick={() => ArticleService.deleteArticleById(record.id)}>
+            Delete
+          </a>
+        </Space>
+      ),
+    },
+  ];
+
+  return (
+    <>
+      <Button
+        type={"primary"}
+        onClick={() => {
+          history.push("/articles/admin/-1");
+        }}
+      >
+        New
+      </Button>
+      <Table columns={columns} dataSource={articles} />
+    </>
+  );
+};
+
+export default AdminArticles;

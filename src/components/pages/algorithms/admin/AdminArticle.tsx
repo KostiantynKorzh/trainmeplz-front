@@ -1,49 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input } from "antd";
-import { EditorState, convertToRaw, ContentState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import draftToHtml from "draftjs-to-html";
-import DefaultLayout from "../../../layouts/DefaultLayout";
+import AdminArticleForm from "./AdminArticleForm";
+import { useParams } from "react-router-dom";
+import ArticleService, { IArticle } from "../../../../services/ArticleService";
+import Test from "../test_article";
 
-const AdminArticle = (props: any) => {
-  const [articleTitle, setArticleTitle] = useState(props.articleTitle || "");
-  const [articleContent, setArticleContent] = useState(
-    props.articleContent || ""
-  );
+const AdminArticle = () => {
+  const { id }: any = useParams();
 
-  const [editorState, setEditorState] = useState<EditorState>(
-    EditorState.createEmpty()
-  );
+  const [article, setArticle] = useState<IArticle>();
 
   useEffect(() => {
-    if (editorState) {
-      console.log(editorState.getCurrentContent());
+    if (id > 0) {
+      // ArticleService.getArticleById(id)
+      //   .then((resp) => setArticle(resp.data))
+      //   .catch(console.log);
+      setArticle(Test.articles[id - 1]);
+    } else {
+      setArticle({
+        id: -1,
+        title: "",
+        description: "",
+        content: "",
+      });
     }
-  }, [editorState]);
+  }, []);
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  return (
-    <>
-      <Form>
-        <Form.Item
-        // label="Username"
-        // name="username"
-        // rules={[{ required: true, message: "Please input your username!" }]}
-        >
-          {/*<Input.TextArea defaultValue={articleContent} autoSize={true} />*/}
-          <Editor
-            editorState={editorState}
-            editorClassName="editor-text"
-            onEditorStateChange={(state: any) => setEditorState(state)}
-          />
-          {/*<img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" />*/}
-        </Form.Item>
-      </Form>
-    </>
-  );
+  return <>{article && <AdminArticleForm initArticle={article} />}</>;
 };
-
 export default AdminArticle;

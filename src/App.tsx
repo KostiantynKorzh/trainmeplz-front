@@ -10,6 +10,7 @@ import Test from "./components/pages/test/Test";
 import AdminArticle from "./components/pages/algorithms/admin/AdminArticle";
 import DefaultLayout from "./components/layouts/DefaultLayout";
 import Article from "./components/pages/algorithms/Article";
+import AdminArticles from "./components/pages/algorithms/admin/AdminArticles";
 
 function App() {
   return (
@@ -21,7 +22,12 @@ function App() {
               <Route exact path="/" component={Main} />
               <Route exact path="/train" component={Train} />
               <Route exact path="/test" component={Test} />
-              <Route exact path="/articles/admin" component={AdminArticle} />
+              <Route
+                exact
+                path="/articles/admin/:id"
+                component={AdminArticle}
+              />
+              <Route exact path="/articles/admin" component={AdminArticles} />
               <Route exact path="/articles/:id" component={Article} />
               <Route exact path="/articles" component={Articles} />
               <Route exact path="/about" component={About} />

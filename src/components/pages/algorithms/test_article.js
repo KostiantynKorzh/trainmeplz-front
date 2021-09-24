@@ -1,30 +1,48 @@
-export const sample = `
-<p>dg20</p>
-<ol>
-<li>fdgfdgfdg</li>
-<li>dfg</li>
-<li>fd</li>
-<li>g</li>
-<li>fdg</li>
-</ol>
-<p></p>
-<p style="text-align:right;">dgdfhbfgbv</p>
-<p></p>
-<div style="text-align:none;"><img src="http://simpleicon.com/wp-content/uploads/ok-256x256.png" alt="undefined" style="height: 20px;width: 20px"/></div>
-<p>feg<strong>dffdg</strong></p>
-<p><strong><ins>Fwefw</ins></strong><sup><strong><ins>e</ins></strong></sup></p>
-<p></p>
-<img src="http://simpleicon.com/wp-content/uploads/ok-256x256.png" alt="undefined" style="height: auto;width: auto"/>
-<p></p>
+// export const sample = `
+// <p>dg20</p>
+// <ol>
+// <li>fdgfdgfdg</li>
+// <li>dfg</li>
+// <li>fd</li>
+// <li>g</li>
+// <li>fdg</li>
+// </ol>
+// <p></p>
+// <p style="text-align:right;">dgdfhbfgbv</p>
+// <p></p>
+// <div style="text-align:none;"><img src="http://simpleicon.com/wp-content/uploads/ok-256x256.png" alt="undefined" style="height: 20px;width: 20px"/></div>
+// <p>feg<strong>dffdg</strong></p>
+// <p><strong><ins>Fwefw</ins></strong><sup><strong><ins>e</ins></strong></sup></p>
+// <p></p>
+// <img src="http://simpleicon.com/wp-content/uploads/ok-256x256.png" alt="undefined" style="height: auto;width: auto"/>
+// <p></p>
+//
+// `;
 
+export const sample = `
+<p>Let me intoduce you the new way of creating web apps: <span style="font-size: 18px;"><em>React</em></span></p>
+<p></p>
+<p></p>
+<div style="text-align:center;"><img src="http://igorosa.com/wp-content/uploads/2021/03/react-js-logo-with-title-1200x865.png" alt="undefined" style="height: 80px;width: 120px"/></div>
+<p></p>
+<p>Why is it cool? Well...</p>
+<ul>
+  <li>dgf</li>
+  <li>dfg</li>
+  <li>fd</li>
+  <li>gfdg  (<strong><ins>not </ins></strong>dfsf)</li>
+  <li>fd</li>
+  <li>gdf</li>
+  <li>g</li>
+  <li>df</li>
+</ul>
 `;
 
 const firstArticle = {
   id: 1,
   title: "First Title",
   description: "First description",
-  content:
-    '<p>dg20</p>\n<ol>\n<li>fdgfdgfdg</li>\n<li>dfg</li>\n<li>fd</li>\n<li>g</li>\n<li>fdg</li>\n</ol>\n<p></p>\n<p style="text-align:right;">dgdfhbfgbv</p>\n<p></p>\n<div style="text-align:none;"><img src="http://simpleicon.com/wp-content/uploads/ok-256x256.png" alt="undefined" style="height: 20px;width: 20px"/></div>\n<p>feg<strong>dffdg</strong></p>\n<p><strong><ins>Fwefw</ins></strong><sup><strong><ins>e</ins></strong></sup></p>\n<p></p>\n<img src="http://simpleicon.com/wp-content/uploads/ok-256x256.png" alt="undefined" style="height: auto;width: auto"/>\n<p></p>',
+  content: sample,
 };
 
 const secondArticle = {
