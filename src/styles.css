@@ -5,8 +5,17 @@
 
 .logo {
     background-color: #001529 !important;
+    border-radius: 20px;
 }
 
 .logo:hover {
     background-color: #001529 !important;
+}
+
+.jumbotron {
+    margin: 5vh 10vw;
+}
+
+.editor-text {
+    min-height: 60vw;
 }

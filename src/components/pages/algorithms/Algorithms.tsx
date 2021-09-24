@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import Article from "./Article";
+import Test from "./test_article";
 
 const Algorithms = () => {
+  const [articles, setArticles] = useState(Test.articles);
+
   return (
     <>
       <ul>
-        <li>First algo</li>
-        <li>Second algo</li>
-        <li>Third algo</li>
+        {articles.length > 0 &&
+          articles.map((article) => (
+            <li>
+              {article.title} : {article.content}
+            </li>
+          ))}
       </ul>
+      <Article />
     </>
   );
 };

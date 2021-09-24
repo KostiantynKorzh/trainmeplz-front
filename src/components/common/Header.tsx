@@ -18,7 +18,7 @@ const Header = ({ children }: any) => {
       >
         <Menu.Item className="logo">
           <Link to="/">
-            <img src="/favicon.png" />
+            <img src="/favicon.png" style={{ borderRadius: "60%" }} />
           </Link>
         </Menu.Item>
         <Menu.Item style={styles.item}>
