@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { sample } from "./test_article";
+import { useParams } from "react-router-dom";
+import Test from "./test_article";
 
-const Article = () => {
-  const [articleTitle, setArticleTitle] = useState("");
-  const [articleContent, setArticleContent] = useState(sample);
+const Article = (): JSX.Element => {
+  const { id }: any = useParams();
+
+  const article = Test.articles[id - 1];
+
+  const [articleTitle, setArticleTitle] = useState(article.title);
+  const [articleContent, setArticleContent] = useState(article.content);
 
   return (
     <>

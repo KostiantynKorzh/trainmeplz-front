@@ -19,3 +19,12 @@
 .editor-text {
     min-height: 60vw;
 }
+
+.ant-card-head-title{
+    display: inline-block;
+    flex: 1 1;
+    padding: 16px 0;
+    overflow: hidden;
+    white-space: normal !important;
+    font-size: 2.5em
+}

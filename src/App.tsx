@@ -9,6 +9,7 @@ import Train from "./components/pages/train/Train";
 import Test from "./components/pages/test/Test";
 import AdminArticle from "./components/pages/algorithms/admin/AdminArticle";
 import DefaultLayout from "./components/layouts/DefaultLayout";
+import Article from "./components/pages/algorithms/Article";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route exact path="/train" component={Train} />
               <Route exact path="/test" component={Test} />
               <Route exact path="/algorithms/admin" component={AdminArticle} />
+              <Route exact path="/algorithms/:id" component={Article} />
               <Route exact path="/algorithms" component={Algorithms} />
               <Route exact path="/about" component={About} />
             </Switch>
