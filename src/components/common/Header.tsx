@@ -28,7 +28,7 @@ const Header = ({ children }: any) => {
           <Link to="/test">Test</Link>
         </Menu.Item>
         <Menu.Item style={styles.item}>
-          <Link to="/algorithms">Algorithms</Link>
+          <Link to="/articles">Articles</Link>
         </Menu.Item>
         <Menu.Item style={styles.item}>
           <Link to="/about">About</Link>
