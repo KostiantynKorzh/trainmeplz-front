@@ -9,6 +9,12 @@ export type IArticle = {
   description: string;
   title: string;
   content: string;
+  labels?: ILabel[];
+};
+
+export type ILabel = {
+  id: number;
+  name: string;
 };
 
 const getAllArticles = (): Promise<AxiosResponse<IArticle[]>> => {

@@ -1,16 +1,16 @@
 import React from "react";
 import "./App.css";
 import Main from "./components/pages/main/Main";
-import Articles from "./components/pages/algorithms/Articles";
 import About from "./components/pages/about/About";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from "./components/common/Header";
 import Train from "./components/pages/train/Train";
 import Test from "./components/pages/test/Test";
-import AdminArticle from "./components/pages/algorithms/admin/AdminArticle";
 import DefaultLayout from "./components/layouts/DefaultLayout";
-import Article from "./components/pages/algorithms/Article";
-import AdminArticles from "./components/pages/algorithms/admin/AdminArticles";
+import AdminArticle from "./components/pages/articles/admin/AdminArticle";
+import AdminArticles from "./components/pages/articles/admin/AdminArticles";
+import Article from "./components/pages/articles/Article";
+import Articles from "./components/pages/articles/Articles";
 
 function App() {
   return (
