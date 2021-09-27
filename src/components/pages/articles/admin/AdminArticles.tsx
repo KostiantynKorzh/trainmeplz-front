@@ -38,7 +38,7 @@ const AdminArticles = () => {
       dataIndex: "actions",
       render: (text: any, record: any) => (
         <Space size="middle">
-          <Link to={`/articles/admin/${record.id}`}>Edit</Link>
+          <Link to={`/admin/articles/${record.id}`}>Edit</Link>
           <a onClick={() => ArticleService.deleteArticleById(record.id)}>
             Delete
           </a>
@@ -52,7 +52,7 @@ const AdminArticles = () => {
       <Button
         type={"primary"}
         onClick={() => {
-          history.push("/articles/admin/-1");
+          history.push("/admin/articles/-1");
         }}
       >
         New

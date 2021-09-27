@@ -3,7 +3,6 @@ import "./App.css";
 import Main from "./components/pages/main/Main";
 import About from "./components/pages/about/About";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Header from "./components/common/Header";
 import Train from "./components/pages/train/Train";
 import Test from "./components/pages/test/Test";
 import DefaultLayout from "./components/layouts/DefaultLayout";
@@ -11,12 +10,13 @@ import AdminArticle from "./components/pages/articles/admin/AdminArticle";
 import AdminArticles from "./components/pages/articles/admin/AdminArticles";
 import Article from "./components/pages/articles/Article";
 import Articles from "./components/pages/articles/Articles";
+import HeaderLayout from "./components/common/headers/HeaderLayout";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Header>
+        <HeaderLayout>
           <DefaultLayout>
             <Switch>
               <Route exact path="/" component={Main} />
@@ -24,16 +24,16 @@ function App() {
               <Route exact path="/test" component={Test} />
               <Route
                 exact
-                path="/articles/admin/:id"
+                path="/admin/articles/:id"
                 component={AdminArticle}
               />
-              <Route exact path="/articles/admin" component={AdminArticles} />
+              <Route exact path="/admin/articles" component={AdminArticles} />
               <Route exact path="/articles/:id" component={Article} />
               <Route exact path="/articles" component={Articles} />
               <Route exact path="/about" component={About} />
             </Switch>
           </DefaultLayout>
-        </Header>
+        </HeaderLayout>
       </BrowserRouter>
     </>
   );
