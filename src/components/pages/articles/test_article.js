@@ -38,44 +38,61 @@ export const sample = `
 </ul>
 `;
 
+const availableLabels = [
+  {
+    id: 1,
+    name: "first",
+  },
+  {
+    id: 2,
+    name: "second",
+  },
+  {
+    id: 3,
+    name: "third",
+  },
+  {
+    id: 4,
+    name: "fourth",
+  },
+  {
+    id: 5,
+    name: "fifth",
+  },
+  {
+    id: 6,
+    name: "sixth",
+  },
+  {
+    id: 7,
+    name: "seventh",
+  },
+  {
+    id: 8,
+    name: "eighth",
+  },
+  {
+    id: 9,
+    name: "ninth",
+  },
+  {
+    id: 10,
+    name: "tenth",
+  },
+];
+
 const firstArticle = {
   id: 1,
   title: "First Title",
   description: "First description",
   content: sample,
   labels: [
-    {
-      id: 1,
-      name: "first",
-    },
-    {
-      id: 3,
-      name: "third",
-    },
-    {
-      id: 4,
-      name: "fourth",
-    },
-    {
-      id: 5,
-      name: "fifth",
-    },
-    {
-      id: 6,
-      name: "sixth",
-    },
-    {
-      id: 7,
-      name: "seventh",
-    },
-    {
-      id: 9,
-      name: "ninth",
-    },
-    {
-      id: 11,
-      name: "eleventh",
-    },
+    availableLabels[0],
+    availableLabels[2],
+    availableLabels[3],
+    availableLabels[5],
+    availableLabels[6],
+    availableLabels[9],
   ],
 };
 
@@ -84,16 +101,7 @@ const secondArticle = {
   title: "Linear regression and how to become an evil without getting tired",
   description: "Second description",
   content: "Second content",
-  labels: [
-    {
-      id: 1,
-      name: "first",
-    },
-    {
-      id: 2,
-      name: "second",
-    },
-  ],
+  labels: [availableLabels[0], availableLabels[1], availableLabels[4]],
 };
 
 const thirdArticle = {
@@ -105,4 +113,4 @@ const thirdArticle = {
 
 const articles = [firstArticle, secondArticle, thirdArticle];
 
-export default { sample, articles };
+export default { sample, articles, availableLabels };

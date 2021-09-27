@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Input } from "antd";
+import { Button, Dropdown, Input, Menu } from "antd";
 import { Editor } from "react-draft-wysiwyg";
 import { ContentState, convertToRaw, EditorState } from "draft-js";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -10,9 +10,14 @@ import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import ArticleService from "../../../../services/ArticleService";
 import { Article } from "../../../../common/types/Article";
+import AdminArticleLabel from "./AdminArticleLabel";
+import { Label } from "../../../../common/types/Label";
+import Test from "../test_article";
 
 const AdminArticleForm = ({ initArticle }: any) => {
   const [article, setArticle] = useState<Article>(initArticle);
+
+  const [availableLabels, setAvailableLabels] = useState<Label[]>([]);
 
   const [editorState, setEditorState] = useState<EditorState>(
     EditorState.createEmpty()
@@ -22,7 +27,12 @@ const AdminArticleForm = ({ initArticle }: any) => {
     if (initArticle) {
       initEditForm();
     }
+    setAvailableLabels(Test.availableLabels);
   }, []);
+
+  // useEffect(() => {
+  //   console.log("labels updated");
+  // }, [article.labels]);
 
   const initEditForm = () => {
     const contentBlock = htmlToDraft(article.content);
@@ -65,6 +75,34 @@ const AdminArticleForm = ({ initArticle }: any) => {
     }
   };
 
+  const isLabelIsInArticleLabels = (labelId: number) => {
+    return article.labels?.some((articleLabel) => articleLabel.id === labelId);
+  };
+
+  const menu = (
+    <Menu>
+      {availableLabels &&
+        availableLabels
+          .filter((label) => !isLabelIsInArticleLabels(label.id))
+          .map((label) => (
+            <Menu.Item
+              onClick={() => {
+                const newLabels = article.labels;
+                newLabels?.push(label);
+                setArticle({ ...article, labels: newLabels });
+              }}
+            >
+              {label.name}
+            </Menu.Item>
+          ))}
+    </Menu>
+  );
+
+  const removeLabel = (labelId: number) => {
+    const newLabels = article.labels?.filter((label) => label.id !== labelId);
+    setArticle({ ...article, labels: newLabels });
+  };
+
   return (
     <>
       <div>
@@ -79,6 +117,10 @@ const AdminArticleForm = ({ initArticle }: any) => {
             setArticle({ ...article, description: e.target.value })
           }
         />
+        <AdminArticleLabel labels={article.labels} removeLabel={removeLabel} />
+        <Dropdown overlay={menu}>
+          <a>Labels</a>
+        </Dropdown>
         <Editor
           editorState={editorState}
           editorClassName="editor-text"

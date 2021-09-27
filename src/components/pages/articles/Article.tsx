@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Test from "./test_article";
 import ArticleService from "../../../services/ArticleService";
-import { Article } from "../../../common/types/Article";
+import { Article as IArticle } from "../../../common/types/Article";
 
 const Article = (): JSX.Element => {
   const { id }: any = useParams();
 
-  const [article, setArticle] = useState<Article>();
+  const [article, setArticle] = useState<IArticle>();
 
   useEffect(() => {
     // ArticleService.getArticleById(id)
