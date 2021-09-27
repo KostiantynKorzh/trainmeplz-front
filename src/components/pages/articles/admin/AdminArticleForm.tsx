@@ -12,7 +12,7 @@ import ArticleService from "../../../../services/ArticleService";
 import { Article } from "../../../../common/types/Article";
 import AdminArticleLabel from "./AdminArticleLabel";
 import { Label } from "../../../../common/types/Label";
-import Test from "../test_article";
+import ArticleLabelService from "../../../../services/ArticleLabelService";
 
 const AdminArticleForm = ({ initArticle }: any) => {
   const [article, setArticle] = useState<Article>(initArticle);
@@ -27,12 +27,10 @@ const AdminArticleForm = ({ initArticle }: any) => {
     if (initArticle) {
       initEditForm();
     }
-    setAvailableLabels(Test.availableLabels);
+    ArticleLabelService.getAllLabels()
+      .then((resp) => setAvailableLabels(resp.data))
+      .catch(console.log);
   }, []);
-
-  // useEffect(() => {
-  //   console.log("labels updated");
-  // }, [article.labels]);
 
   const initEditForm = () => {
     const contentBlock = htmlToDraft(article.content);
@@ -46,12 +44,11 @@ const AdminArticleForm = ({ initArticle }: any) => {
   };
 
   const onSubmit = () => {
-    if (initArticle.id > 0) {
+    if (initArticle.id != -1) {
       updateArticle();
     } else {
       createArticle();
     }
-    console.log(article);
   };
 
   const updateArticle = (): void => {
@@ -60,7 +57,8 @@ const AdminArticleForm = ({ initArticle }: any) => {
         article.id,
         article.title,
         article.description,
-        article.content
+        article.content,
+        article.labels
       );
     }
   };
@@ -70,13 +68,14 @@ const AdminArticleForm = ({ initArticle }: any) => {
       ArticleService.createNewArticle(
         article.title,
         article.description,
-        article.content
+        article.content,
+        article.labels
       );
     }
   };
 
   const isLabelIsInArticleLabels = (labelId: number) => {
-    return article.labels?.some((articleLabel) => articleLabel.id === labelId);
+    return article.labels?.some((articleLabel) => articleLabel.id == labelId);
   };
 
   const menu = (

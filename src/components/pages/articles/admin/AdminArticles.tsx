@@ -11,10 +11,9 @@ const AdminArticles = () => {
   const history = useHistory();
 
   useEffect(() => {
-    // ArticleService.getAllArticles()
-    //   .then((resp) => setArticles(resp.data))
-    //   .catch(console.log);
-    setArticles(Test.articles);
+    ArticleService.getAllArticles()
+      .then((resp) => setArticles(resp.data))
+      .catch(console.log);
   }, []);
 
   const columns = [

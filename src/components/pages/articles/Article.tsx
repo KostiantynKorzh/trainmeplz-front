@@ -10,10 +10,9 @@ const Article = (): JSX.Element => {
   const [article, setArticle] = useState<IArticle>();
 
   useEffect(() => {
-    // ArticleService.getArticleById(id)
-    //   .then((resp) => setArticle(resp.data))
-    //   .catch(console.log);
-    setArticle(Test.articles[id - 1]);
+    ArticleService.getArticleById(id)
+      .then((resp) => setArticle(resp.data))
+      .catch(console.log);
   }, []);
 
   return (
