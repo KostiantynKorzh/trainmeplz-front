@@ -10,16 +10,16 @@ import AdminArticle from "./components/pages/articles/admin/AdminArticle";
 import AdminArticles from "./components/pages/articles/admin/AdminArticles";
 import Article from "./components/pages/articles/Article";
 import Articles from "./components/pages/articles/Articles";
-import HeaderLayout from "./components/common/headers/HeaderLayout";
+import HeaderContainer from "./components/common/headers/HeaderContainer";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <HeaderLayout>
+        <HeaderContainer>
           <DefaultLayout>
             <Switch>
-              <Route exact path="/" component={Main} />
+              <Route exact path={["/", "/home"]} component={Main} />
               <Route exact path="/train" component={Train} />
               <Route exact path="/test" component={Test} />
               <Route
@@ -33,7 +33,7 @@ function App() {
               <Route exact path="/about" component={About} />
             </Switch>
           </DefaultLayout>
-        </HeaderLayout>
+        </HeaderContainer>
       </BrowserRouter>
     </>
   );

@@ -25,7 +25,7 @@ const AdminHeader = ({ children }: any) => {
           <Link to="/admin/articles">Articles</Link>
         </Menu.Item>
         <Menu.Item style={styles.item}>
-          <Link to="/">Exit</Link>
+          <Link to="/home">Exit</Link>
         </Menu.Item>
       </Menu>
       {children}

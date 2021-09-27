@@ -1,11 +1,14 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import AdminHeader from "./AdminHeader";
 import Header from "./Header";
 
-const HeaderLayout = ({ children }: any) => {
+const HeaderContainer = ({ children }: any) => {
+  const location = useLocation();
+
   return (
     <>
-      {window.location.href.includes("admin") ? (
+      {location.pathname.includes("admin") ? (
         <AdminHeader>{children}</AdminHeader>
       ) : (
         <Header>{children}</Header>
@@ -14,4 +17,4 @@ const HeaderLayout = ({ children }: any) => {
   );
 };
 
-export default HeaderLayout;
+export default HeaderContainer;
