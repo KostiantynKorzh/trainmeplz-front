@@ -2,21 +2,21 @@ import React from "react";
 import { Tag } from "antd";
 import { Label } from "../../../common/types/Label";
 
-const ArticleLabel = ({ labels }: any) => {
+const ArticleLabel = ({ labels, isPreview = true }: any) => {
   const showLabels = () => {
     if (labels) {
       let customLabels = labels;
-      let isSliced = false;
-      if (labels && labels.length > 3) {
-        customLabels = labels.slice(0, 4);
-        isSliced = true;
+      if (isPreview) {
+        if (labels && labels.length > 3) {
+          customLabels = labels.slice(0, 4);
+        }
       }
       return (
         <div>
           {customLabels.map((label: Label) => (
             <Tag color="lime">{label.name}</Tag>
           ))}
-          {isSliced && <span>...</span>}
+          {isPreview && <span>...</span>}
         </div>
       );
     }

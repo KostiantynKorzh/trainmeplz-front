@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Test from "./test_article";
 import ArticleService from "../../../services/ArticleService";
 import { Article as IArticle } from "../../../common/types/Article";
+import ArticleLabel from "./ArticleLabel";
 
 const Article = (): JSX.Element => {
   const { id }: any = useParams();
@@ -17,7 +18,16 @@ const Article = (): JSX.Element => {
 
   return (
     <>
-      <div className="center-div">{article && <h1>{article.title}</h1>}</div>
+      <div>
+        <div className="center-div">
+          <div>{article && <h1>{article.title}</h1>}</div>
+        </div>
+        <div>
+          {article && article.labels && (
+            <ArticleLabel labels={article.labels} isPreview={false} />
+          )}
+        </div>
+      </div>
       <hr
         style={{
           minWidth: "150vw",
