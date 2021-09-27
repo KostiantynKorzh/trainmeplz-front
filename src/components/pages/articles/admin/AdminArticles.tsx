@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import ArticleService, { IArticle } from "../../../../services/ArticleService";
+import ArticleService from "../../../../services/ArticleService";
+import { Article } from "../../../../common/types/Article";
 import Test from "../test_article";
 import { Button, Space, Table } from "antd";
 import { Link, useHistory } from "react-router-dom";
 
 const AdminArticles = () => {
-  const [articles, setArticles] = useState<IArticle[]>([]);
+  const [articles, setArticles] = useState<Article[]>([]);
 
   const history = useHistory();
 

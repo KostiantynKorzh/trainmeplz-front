@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Test from "./test_article";
 import ArticlePreview from "./ArticlePreview";
 import { Link } from "react-router-dom";
-import ArticleService, { IArticle } from "../../../services/ArticleService";
+import ArticleService from "../../../services/ArticleService";
+import { Article } from "../../../common/types/Article";
 
 const Articles = () => {
-  const [articles, setArticles] = useState<IArticle[]>([]);
+  const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
     // ArticleService.getAllArticles()

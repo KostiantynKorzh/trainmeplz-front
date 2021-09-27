@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import AdminArticleForm from "./AdminArticleForm";
 import { useParams } from "react-router-dom";
-import ArticleService, { IArticle } from "../../../../services/ArticleService";
+import ArticleService from "../../../../services/ArticleService";
 import Test from "../test_article";
+import { Article } from "../../../../common/types/Article";
 
 const AdminArticle = () => {
   const { id }: any = useParams();
 
-  const [article, setArticle] = useState<IArticle>();
+  const [article, setArticle] = useState<Article>();
 
   useEffect(() => {
     if (id > 0) {

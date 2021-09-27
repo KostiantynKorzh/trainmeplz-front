@@ -1,5 +1,5 @@
 import axios from "axios";
-import { REACT_APP_BACK_URL } from "../utils/Constants";
+import { REACT_APP_BACK_URL } from "../common/Constants";
 
 const sendDataToServer = (label: string, imageData: any): Promise<any> => {
   const data = new FormData();

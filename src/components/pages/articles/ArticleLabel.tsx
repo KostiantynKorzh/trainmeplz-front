@@ -1,6 +1,6 @@
 import React from "react";
 import { Tag } from "antd";
-import { ILabel } from "../../../services/ArticleService";
+import { Label } from "../../../common/types/Label";
 
 const ArticleLabel = ({ labels }: any) => {
   const showLabels = () => {
@@ -13,7 +13,7 @@ const ArticleLabel = ({ labels }: any) => {
       }
       return (
         <div>
-          {customLabels.map((label: ILabel) => (
+          {customLabels.map((label: Label) => (
             <Tag color="lime">{label.name}</Tag>
           ))}
           {isSliced && <span>...</span>}

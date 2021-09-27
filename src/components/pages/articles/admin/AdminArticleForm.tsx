@@ -8,10 +8,11 @@ import draftToHtml from "draftjs-to-html";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import htmlToDraft from "html-to-draftjs";
-import ArticleService, { IArticle } from "../../../../services/ArticleService";
+import ArticleService from "../../../../services/ArticleService";
+import { Article } from "../../../../common/types/Article";
 
 const AdminArticleForm = ({ initArticle }: any) => {
-  const [article, setArticle] = useState<IArticle>(initArticle);
+  const [article, setArticle] = useState<Article>(initArticle);
 
   const [editorState, setEditorState] = useState<EditorState>(
     EditorState.createEmpty()
