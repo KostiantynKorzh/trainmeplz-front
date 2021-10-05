@@ -17,7 +17,12 @@ const logout = (): void => {
   localStorage.removeItem("token");
 };
 
+const validateToken = (): Promise<AxiosResponse<string>> => {
+  return axios.get(AUTH_URL + "?token=" + localStorage.getItem("token"));
+};
+
 export default {
   login,
   logout,
+  validateToken,
 };

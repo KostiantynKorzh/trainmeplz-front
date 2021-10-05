@@ -12,13 +12,12 @@ import Article from "./components/pages/articles/Article";
 import Articles from "./components/pages/articles/Articles";
 import HeaderContainer from "./components/common/headers/HeaderContainer";
 import Login from "./components/pages/login/Login";
+import AuthService from "./services/AuthService";
 
 function App() {
   useEffect(() => {
     return () => {
-      window.addEventListener("beforeunload", () =>
-        localStorage.removeItem("token")
-      );
+      window.addEventListener("beforeunload", () => AuthService.logout());
     };
   }, []);
 
