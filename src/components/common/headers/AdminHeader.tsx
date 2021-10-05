@@ -1,6 +1,7 @@
 import React from "react";
 import { Menu, Image } from "antd";
 import { Link } from "react-router-dom";
+import useAuth from "../../../common/useAuth";
 
 const AdminHeader = ({ children }: any) => {
   const styles = {
@@ -8,6 +9,8 @@ const AdminHeader = ({ children }: any) => {
       margin: "auto",
     },
   };
+
+  useAuth();
 
   return (
     <>

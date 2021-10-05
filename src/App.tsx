@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Main from "./components/pages/main/Main";
 import About from "./components/pages/about/About";
@@ -11,8 +11,17 @@ import AdminArticles from "./components/pages/articles/admin/AdminArticles";
 import Article from "./components/pages/articles/Article";
 import Articles from "./components/pages/articles/Articles";
 import HeaderContainer from "./components/common/headers/HeaderContainer";
+import Login from "./components/pages/login/Login";
 
 function App() {
+  useEffect(() => {
+    return () => {
+      window.addEventListener("beforeunload", () =>
+        localStorage.removeItem("token")
+      );
+    };
+  }, []);
+
   return (
     <>
       <BrowserRouter>
@@ -31,6 +40,7 @@ function App() {
               <Route exact path="/articles/:id" component={Article} />
               <Route exact path="/articles" component={Articles} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/auth" component={Login} />
             </Switch>
           </DefaultLayout>
         </HeaderContainer>
