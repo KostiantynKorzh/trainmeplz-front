@@ -43,7 +43,17 @@ const AdminArticleForm = ({ initArticle }: any) => {
     }
   };
 
+  const fixUploadCenterImage = () => {
+    let fixedContent = article.content;
+    fixedContent = fixedContent.replaceAll(
+      "text-align:none",
+      "text-align:center"
+    );
+    setArticle({ ...article, content: fixedContent });
+  };
+
   const onSubmit = () => {
+    fixUploadCenterImage();
     if (initArticle.id != -1) {
       updateArticle();
     } else {
