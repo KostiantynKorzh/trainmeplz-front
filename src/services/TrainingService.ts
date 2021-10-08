@@ -6,7 +6,7 @@ const sendDataToServer = (label: string, imageData: any): Promise<any> => {
   data.append("file", imageData.originFileObj);
   data.append("filename", label);
 
-  return axios.post(REACT_APP_BACK_URL + "trains?label=" + label, data, {
+  return axios.post(REACT_APP_BACK_URL + "trainings?label=" + label, data, {
     headers: { "content-type": "multipart/form-data" },
   });
 };

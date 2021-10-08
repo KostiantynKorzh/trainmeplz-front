@@ -3,7 +3,7 @@ import "./App.css";
 import Main from "./components/pages/main/Main";
 import About from "./components/pages/about/About";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Train from "./components/pages/train/Train";
+import Training from "./components/pages/training/Training";
 import Test from "./components/pages/test/Test";
 import DefaultLayout from "./components/layouts/DefaultLayout";
 import AdminArticle from "./components/pages/articles/admin/AdminArticle";
@@ -28,7 +28,7 @@ function App() {
           <DefaultLayout>
             <Switch>
               <Route exact path={["/", "/home"]} component={Main} />
-              <Route exact path="/train" component={Train} />
+              <Route exact path="/training" component={Training} />
               <Route exact path="/test" component={Test} />
               <Route
                 exact

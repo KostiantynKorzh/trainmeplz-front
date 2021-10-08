@@ -22,7 +22,7 @@ const Header = ({ children }: any) => {
           </Link>
         </Menu.Item>
         <Menu.Item style={styles.item}>
-          <Link to="/train">Train</Link>
+          <Link to="/training">Training</Link>
         </Menu.Item>
         <Menu.Item style={styles.item}>
           <Link to="/test">Test</Link>

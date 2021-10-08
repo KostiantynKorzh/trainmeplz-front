@@ -6,7 +6,7 @@ import LabelService from "../../../services/LabelService";
 
 const { Option } = Select;
 
-const TrainForm = ({ onSubmit, submitted }: any): JSX.Element => {
+const TrainingForm = ({ onSubmit, submitted }: any): JSX.Element => {
   const [labels, setLabels] = useState([]);
 
   const [chosenLabel, setChosenLabel] = useState("");
@@ -76,4 +76,4 @@ const TrainForm = ({ onSubmit, submitted }: any): JSX.Element => {
   );
 };
 
-export default TrainForm;
+export default TrainingForm;

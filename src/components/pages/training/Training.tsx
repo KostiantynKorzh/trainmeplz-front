@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import TrainForm from "./TrainForm";
+import TrainingForm from "./TrainingForm";
 import StatsBlock from "./StatsBlock";
-import TrainService from "../../../services/TrainService";
+import TrainService from "../../../services/TrainingService";
 
-const Train = () => {
+const Training = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = (chosenLabel: string, image: any): void => {
@@ -16,10 +16,10 @@ const Train = () => {
 
   return (
     <>
-      <TrainForm onSubmit={onSubmit} submitted={submitted} />
+      <TrainingForm onSubmit={onSubmit} submitted={submitted} />
       <StatsBlock submitted={submitted} />
     </>
   );
 };
 
-export default Train;
+export default Training;
